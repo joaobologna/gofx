@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package gofx.v2;
+
+import "google/api/annotations.proto";
+
+option go_package = "github.com/joaobologna/gofx/protogen/v2";
+
+service AssessmentManager {
+
+  // HC stands for health check service, tells where or not
+  // the application is healthy.
+  rpc HC(HCRequest) returns (HCResponse) {
+    option (google.api.http) = {
+      get: "/hc"
+    };
+  }
+  rpc KudosAnonymous(KudosAnonymousRequest) returns (KudosAnonymousResponse) {
+    option (google.api.http) = {
+      post: "/kudos"
+      body: "*"
+    };
+  }
+
+  rpc ReportAnonymous(ReportAnonymousRequest) returns (ReportAnonymousResponse) {
+    option (google.api.http) = {
+      post: "/report"
+      body: "*"
+    };
+  }
+
+}
+
+message HCRequest {
+
+}
+
+message HCResponse {
+
+}
+
+message KudosAnonymousRequest {
+  string message = 1;
+}
+
+message KudosAnonymousResponse {
+}
+
+message ReportAnonymousRequest {
+  string message = 1;
+}
+
+message ReportAnonymousResponse {
+
+}
